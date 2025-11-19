@@ -31,6 +31,14 @@ const Produto = db.define('produto',{
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true // Por padrão, o produto está visível para venda
+    },
+    idCategoria: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+            model: 'categorias_produtos',
+            key: 'codCategoria'
+        }
     }
 },{
     timestamps: true,
