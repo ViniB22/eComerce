@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/api.js" defer></script>
+    <script src="../assets/js/auth.js" defer></script>
+    <script src="../assets/js/produtos.js" defer></script>
+    <title>Produtos - TechStore</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>🛒 TechStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="produtos.html" class="nav-link active">Produtos</a>
+                <a href="carrinho.html" class="nav-link">Carrinho</a>
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline" id="loginBtn">Entrar</a>
+                    <a href="registro.html" class="btn btn-primary" id="registroBtn">Cadastrar</a>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span id="userName"></span>
+                        <div class="dropdown">
+                            <a href="perfil.html">Meu Perfil</a>
+                            <a href="pedidos.html">Meus Pedidos</a>
+                            <button id="logoutBtn">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Nossos Produtos</h1>
+                <div class="filters">
+                    <select id="categoriaFilter">
+                        <option value="">Todas as categorias</option>
+                    </select>
+                    <input type="text" id="searchInput" placeholder="Buscar produtos...">
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Produtos carregados via JavaScript -->
+            </div>
+
+            <div id="loading" class="loading">Carregando produtos...</div>
+            <div id="noProducts" class="no-products" style="display: none;">
+                <p>Nenhum produto encontrado.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 TechStore. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

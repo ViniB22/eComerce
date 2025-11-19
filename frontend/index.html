@@ -3,24 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/exe4mplo.js" defer></script>
-    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>TechStore - Sua Loja de Tecnologia</title>
 </head>
 <body>
-    <header>
-
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>🛒 TechStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="public/produtos.html" class="nav-link">Produtos</a>
+                <a href="public/carrinho.html" class="nav-link">Carrinho</a>
+                <div class="nav-auth">
+                    <a href="public/login.html" class="btn btn-outline" id="loginBtn">Entrar</a>
+                    <a href="public/registro.html" class="btn btn-primary" id="registroBtn">Cadastrar</a>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span id="userName"></span>
+                        <div class="dropdown">
+                            <a href="public/perfil.html">Meu Perfil</a>
+                            <a href="public/pedidos.html">Meus Pedidos</a>
+                            <button id="logoutBtn">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
-    <main>
-        <div class="box">
-            <div id="resafa"></div>
-        </div>
-        <div class="box">
-            <div id="resfazn"></div>
-        </div>
-        <div class="box">
-            <div id="respront"></div>
-        </div>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Bem-vindo à TechStore</h1>
+                <p>Encontre os melhores produtos de tecnologia com os melhores preços</p>
+                <a href="public/produtos.html" class="btn btn-primary btn-large">Ver Produtos</a>
+            </div>
+        </section>
+
+        <!-- Destaques -->
+        <section class="featured">
+            <h2>Produtos em Destaque</h2>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Produtos carregados via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Categorias -->
+        <section class="categories">
+            <h2>Categorias</h2>
+            <div class="categories-grid" id="categoriesList">
+                <!-- Categorias carregadas via JavaScript -->
+            </div>
+        </section>
     </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 TechStore. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/produtos.js"></script>
 </body>
 </html>
