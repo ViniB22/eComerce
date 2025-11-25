@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopStore</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/products.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/products.js" defer></script>
+    <script src="assets/js/cart.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#" onclick="showSection('home')">Home</a>
+                <a href="#" onclick="showSection('products')">Produtos</a>
+                <a href="#" onclick="showSection('cart')">Carrinho (<span id="cart-count">0</span>)</a>
+                <div class="auth-buttons">
+                    <button id="login-btn" onclick="showSection('login')">Login</button>
+                    <button id="register-btn" onclick="showSection('register')">Cadastrar</button>
+                    <button id="logout-btn" style="display: none;" onclick="logout()">Sair</button>
+                    <span id="user-welcome" style="display: none;"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h2>Bem-vindo à ShopStore</h2>
+                <p>Encontre os melhores produtos</p>
+                <button onclick="showSection('products')" class="btn-primary">Ver Produtos</button>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="login" class="section">
+            <div class="auth-container">
+                <h2>Login</h2>
+                <form id="login-form" class="auth-form">
+                    <input type="email" id="login-email" placeholder="E-mail" required>
+                    <input type="password" id="login-password" placeholder="Senha" required>
+                    <button type="submit" class="btn-primary">Entrar</button>
+                </form>
+                <p>Não tem conta? <a href="#" onclick="showSection('register')">Cadastre-se</a></p>
+            </div>
+        </section>
+
+        <!-- Register Section -->
+        <section id="register" class="section">
+            <div class="auth-container">
+                <h2>Cadastro</h2>
+                <form id="register-form" class="auth-form">
+                    <input type="text" id="register-name" placeholder="Nome completo" required>
+                    <input type="email" id="register-email" placeholder="E-mail" required>
+                    <input type="password" id="register-password" placeholder="Senha" required>
+                    <input type="tel" id="register-phone" placeholder="Telefone">
+                    <button type="submit" class="btn-primary">Cadastrar</button>
+                </form>
+                <p>Já tem conta? <a href="#" onclick="showSection('login')">Faça login</a></p>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="section">
+            <div class="products-header">
+                <h2>Nossos Produtos</h2>
+                <div class="filters">
+                    <select id="category-filter">
+                        <option value="">Todas as categorias</option>
+                    </select>
+                    <input type="text" id="search-products" placeholder="Buscar produtos...">
+                </div>
+            </div>
+            <div id="products-grid" class="products-grid">
+                <!-- Produtos carregados via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart" class="section">
+            <div class="cart-container">
+                <h2>Seu Carrinho</h2>
+                <div id="cart-items" class="cart-items">
+                    <!-- Itens do carrinho -->
+                </div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <strong>Total: R$ <span id="cart-total">0,00</span></strong>
+                    </div>
+                    <button id="checkout-btn" class="btn-primary" onclick="checkout()">Finalizar Compra</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="section">
+            <div class="orders-container">
+                <h2>Meus Pedidos</h2>
+                <div id="orders-list">
+                    <!-- Lista de pedidos -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
