@@ -9,7 +9,7 @@ class AuthService {
         localStorage.removeItem('token');
         localStorage.removeItem('usuario');
         localStorage.removeItem('carrinho');
-        window.location.href = '../../index.html'; // Volta para a página inicial
+        window.location.href = '../index.html'; // Volta para a página inicial
     }    
 
     async login(email, senha) {
