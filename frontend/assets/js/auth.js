@@ -2,15 +2,15 @@
 class AuthService {
     constructor() {
         this.baseURL = 'http://localhost:3000';
-        this.token = localStorage.getItem('token');
+        this.token = sessionStorage.getItem('token');
     }
     // Adicione esta função à classe AuthService no auth.js
     logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('usuario');
-        localStorage.removeItem('carrinho');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('usuario');
+        sessionStorage.removeItem('carrinho');
         window.location.href = '../index.html'; // Volta para a página inicial
-    }    
+    }
 
     async login(email, senha) {
         try {
@@ -29,8 +29,9 @@ class AuthService {
             }
 
             // Salva token e dados do usuário
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('usuario', JSON.stringify(data.usuario));
+            sessionStorage.setItem('token', data.token)
+            sessionStorage.setItem('nome', data.usuario.nome)
+            sessionStorage.setItem('tipo', data.usuario.tipo)
 
             return data;
         } catch (error) {
@@ -39,9 +40,10 @@ class AuthService {
     }
 
     logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('usuario');
-        window.location.href = '../login.html';
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('usuario');
+        sessionStorage.removeItem('tipo');
+        window.location.href = '../index.html';
     }
 
     getToken() {
@@ -49,7 +51,7 @@ class AuthService {
     }
 
     getUsuario() {
-        const usuario = localStorage.getItem('usuario');
+        const usuario = sessionStorage.getItem('usuario');
         return usuario ? JSON.parse(usuario) : null;
     }
 
@@ -98,8 +100,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Redirecionar após breve delay
                 setTimeout(() => {
-                    window.location.href = '../index.html';
-                }, 1000);
+
+                // Redirecionar conforme tipo
+                if (dados.usuario.tipo === 'ADMIN') {
+
+                    location.href = './produto.html'
+                } else {
+
+                    location.href = './carrinho.html'
+                }
+            }, 1500)
 
             } catch (error) {
                 showMessage(error.message, 'error');
@@ -124,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     const btnLogout = document.getElementById('btnLogout');
     if (btnLogout) {
-        btnLogout.addEventListener('click', function() {
+        btnLogout.addEventListener('click', function () {
             if (confirm('Tem certeza que deseja sair?')) {
                 authService.logout();
             }

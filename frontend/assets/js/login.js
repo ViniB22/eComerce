@@ -1,15 +1,13 @@
 let res = document.getElementById('res')
-let nome = document.getElementById('nome')
-let login = document.getElementById('login')
-let logout = document.getElementById('logout')
+let login = document.getElementById('loginButton')
+let logout = document.getElementById('btnLogout')
 
 // Verifica se o usuário já está logado ao carregar a página
 window.addEventListener('DOMContentLoaded', () => {
-    const statusLog = localStorage.getItem('statusLog')
-    const nomeUsuario = localStorage.getItem('nome')
+    const token = sessionStorage.getItem('token')
+    const nomeUsuario = sessionStorage.getItem('nome')
     
-    if (statusLog === 'true' && nomeUsuario) {
-        nome.innerHTML = `Nome: ${nomeUsuario}`
+    if (token === 'true' && nomeUsuario) {
         res.innerHTML = `Você já está logado!`
         logout.style.display = 'inline-block'
         login.style.display = 'none'
@@ -34,16 +32,23 @@ login.addEventListener('click', () => {
     })
     .then(resp => resp.json())
     .then(dados => {
-        localStorage.setItem('statusLog', dados.statusLog)
-        localStorage.setItem('nome', dados.nome)
+        sessionStorage.setItem('token', dados.token)
+        sessionStorage.setItem('nome', dados.usuario.nome)
+        sessionStorage.setItem('tipo', dados.usuario.tipo)
 
-        nome.innerHTML = `Nome: ${dados.nome}`
-        res.innerHTML = `${dados.message}`
+        res.innerHTML = 'Login realizado com sucesso!'
         
-        if (dados.statusLog === 'true') {
-            logout.style.display = 'inline-block'
-            login.style.display = 'none'
-        }
+        setTimeout(() => {
+            
+            // Redirecionar conforme tipo
+            if(dados.usuario.tipo === 'ADMIN') {
+
+                location.href = './produto.html'
+            }else{
+
+                location.href = './carrinho.html'
+            }
+        }, 1500)
     })
     .catch((err) => {
         console.error('Erro ao login', err)
@@ -53,8 +58,6 @@ login.addEventListener('click', () => {
 
 logout.addEventListener('click', () => {
     localStorage.clear()
-    nome.innerHTML = ''
-    res.innerHTML = 'Você saiu do sistema.'
     logout.style.display = 'none'
     login.style.display = 'inline-block'
 })

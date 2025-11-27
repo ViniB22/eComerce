@@ -12,7 +12,7 @@ let atualizarParcial = document.getElementById('atualizarParcial')
 let apagar = document.getElementById('apagar')
 let btnFiltrar = document.getElementById('btnFiltrar')
 
-let statusLog = localStorage.getItem('statusLog')
+const token = sessionStorage.getItem('token')
 let produtos = []
 let categorias = []
 
@@ -24,7 +24,13 @@ if (statusLog === 'true') {
 
     // Carregar produtos
     function carregarProdutos() {
-        fetch(`http://localhost:3000/produtos?statusLog=${statusLog}`)
+        fetch(`http://localhost:3000/produtos`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
             .then(resp => resp.json())
             .then(dados => {
                 produtos = dados
@@ -38,7 +44,13 @@ if (statusLog === 'true') {
 
     // Carregar categorias para os selects
     function carregarCategorias() {
-        fetch(`http://localhost:3000/categorias?statusLog=${statusLog}`)
+        fetch(`http://localhost:3000/categorias`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
             .then(resp => resp.json())
             .then(dados => {
                 categorias = dados.filter(cat => cat.is_ativo)
@@ -52,7 +64,7 @@ if (statusLog === 'true') {
     // Preencher selects de categoria
     function preencherSelectCategorias() {
         const selects = ['idCategoria', 'idCategoriaUp', 'categoriaFilter']
-        
+
         selects.forEach(selectId => {
             const select = document.getElementById(selectId)
             if (select) {
@@ -60,7 +72,7 @@ if (statusLog === 'true') {
                 const primeiraOpcao = select.options[0]
                 select.innerHTML = ''
                 select.appendChild(primeiraOpcao)
-                
+
                 categorias.forEach(categoria => {
                     const option = document.createElement('option')
                     option.value = categoria.codCategoria
@@ -131,9 +143,11 @@ if (statusLog === 'true') {
 
         console.log('Cadastrando produto:', valores)
 
-        fetch(`http://localhost:3000/produtos?statusLog=${statusLog}`, {
+        fetch(`http://localhost:3000/produtos`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' ,
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify(valores)
         })
             .then(resp => resp.json())
@@ -155,7 +169,7 @@ if (statusLog === 'true') {
                 document.getElementById('modelo').value = ''
                 document.getElementById('preco').value = ''
                 document.getElementById('imagem_url').value = ''
-                
+
                 // Recarregar lista
                 carregarProdutos()
             })
@@ -193,9 +207,10 @@ if (statusLog === 'true') {
 
         console.log('Atualizando produto:', valores)
 
-        fetch(`http://localhost:3000/produtos/${codProduto}?statusLog=${statusLog}`, {
+        fetch(`http://localhost:3000/produtos/${codProduto}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`},
             body: JSON.stringify(valores)
         })
             .then(resp => resp.json())
@@ -243,9 +258,10 @@ if (statusLog === 'true') {
 
         console.log('Atualizando parcialmente:', valores)
 
-        fetch(`http://localhost:3000/produtos/${codProduto}?statusLog=${statusLog}`, {
+        fetch(`http://localhost:3000/produtos/${codProduto}`, {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`},
             body: JSON.stringify(valores)
         })
             .then(resp => resp.json())
@@ -281,9 +297,10 @@ if (statusLog === 'true') {
             return
         }
 
-        fetch(`http://localhost:3000/produtos/${codProduto}?statusLog=${statusLog}`, {
+        fetch(`http://localhost:3000/produtos/${codProduto}`, {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` }
         })
             .then(resp => resp.json())
             .then(dados => {
@@ -338,7 +355,7 @@ if (statusLog === 'true') {
     }
 
     // Funções globais para os botões de ação
-    window.verDetalhes = function(codProduto) {
+    window.verDetalhes = function (codProduto) {
         const produto = produtos.find(p => p.codProduto === codProduto)
         if (produto) {
             const categoria = categorias.find(cat => cat.codCategoria === produto.idCategoria)
@@ -358,7 +375,7 @@ if (statusLog === 'true') {
         }
     }
 
-    window.preencherFormularioAtualizacao = function(codProduto) {
+    window.preencherFormularioAtualizacao = function (codProduto) {
         const produto = produtos.find(p => p.codProduto === codProduto)
         if (produto) {
             document.getElementById('codProdutoUp').value = produto.codProduto
@@ -369,7 +386,7 @@ if (statusLog === 'true') {
             document.getElementById('idCategoriaUp').value = produto.idCategoria
             document.getElementById('imagem_urlUp').value = produto.imagem_url || ''
             document.getElementById('ativoUp').value = produto.ativo.toString()
-            
+
             // Scroll para o formulário de atualização
             document.getElementById('codProdutoUp').scrollIntoView({ behavior: 'smooth' })
         }
