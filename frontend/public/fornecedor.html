@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/fornecedor.js" defer></script>
+    <title>Fornecedores</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="./usuario.html">Usuário</a>
+            <a href="./produto.html">Produto</a>
+            <a href="./categoria.html">Categoria</a>
+            <a href="./estoque.html">Estoque</a>
+            <a href="./fornecedor.html">Fornecedor</a>
+            <a href="./pedido.html">Pedido</a>
+            <a href="./endereco.html">Endereço</a>
+            <a href="./compra.html">Compra</a>
+            <a href="./pagamento.html">Pagamento</a>
+            <a href="./entrega.html">Entrega</a>
+            <a href="./itemPedido.html">Itens Pedido</a>
+            <a href="./itensCompra.html">Itens Compra</a>
+            <a href="./produtoFornecedor.html">Produto-Fornecedor</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Gerenciar Fornecedores</h1>
+        
+        <div class="box">
+            <h2>Tabela dos Fornecedores</h2>
+            <div id="resList"></div>
+        </div>
+
+        <div class="box">
+            <h2>Cadastrar Fornecedor</h2>
+            <label for="nomeEmpresa">Nome da Empresa</label>
+            <input type="text" id="nomeEmpresa" placeholder="Ex.: Tech Ltda"><br>
+
+            <label for="cnpj">CNPJ</label>
+            <input type="text" id="cnpj" placeholder="Ex.: 12.345.678/0001-90"><br>
+
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Ex.: contato@tech.com"><br>
+
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" placeholder="Ex.: (11) 99999-9999"><br>
+            
+            <button id="cadastrar">Cadastrar</button>
+            <div id="resCad"></div>
+        </div>
+
+        <div class="box">
+            <h2>Atualizar Fornecedor (Completo)</h2>
+            <label for="codFornecedorUp">Código do Fornecedor</label>
+            <input type="number" id="codFornecedorUp" placeholder="Ex.: 1"><br>
+            
+            <label for="nomeEmpresaUp">Nome da Empresa</label>
+            <input type="text" id="nomeEmpresaUp" placeholder="Ex.: Tech Ltda"><br>
+            
+            <label for="cnpjUp">CNPJ</label>
+            <input type="text" id="cnpjUp" placeholder="Ex.: 12.345.678/0001-90"><br>
+
+            <label for="emailUp">Email</label>
+            <input type="text" id="emailUp" placeholder="Ex.: contato@tech.com"><br>
+
+            <label for="telefoneUp">Telefone</label>
+            <input type="text" id="telefoneUp" placeholder="Ex.: (11) 99999-9999"><br>
+
+            <button id="atualizar">Atualizar</button>
+            <div id="resAtualizar"></div>
+        </div>
+
+        <div class="box">
+            <h2>Atualizar Parcialmente Fornecedor</h2>
+            <label for="codFornecedorPatch">Código do Fornecedor</label>
+            <input type="number" id="codFornecedorPatch" placeholder="Ex.: 1"><br>
+            
+            <label for="nomeEmpresaPatch">Nome da Empresa (opcional)</label>
+            <input type="text" id="nomeEmpresaPatch" placeholder="Ex.: Tech Ltda"><br>
+            
+            <label for="emailPatch">Email (opcional)</label>
+            <input type="text" id="emailPatch" placeholder="Ex.: novo@tech.com"><br>
+
+            <label for="telefonePatch">Telefone (opcional)</label>
+            <input type="text" id="telefonePatch" placeholder="Ex.: (11) 88888-8888"><br>
+
+            <button id="atualizarParcial">Atualizar Parcial</button>
+            <div id="resAtualizarParcial"></div>
+        </div>
+
+        <div class="box">
+            <h2>Deletar Fornecedor</h2>
+            <label for="codFornecedorDel">Código do Fornecedor</label>
+            <input type="number" id="codFornecedorDel" placeholder="Ex.: 1"><br>
+            
+            <button id="apagar">Apagar</button>
+            <div id="resDel"></div>
+        </div>
+    </main>
+</body>
+</html>

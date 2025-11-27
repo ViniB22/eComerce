@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/pagamento.js" defer></script>
+    <title>Pagamentos</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="./usuario.html">Usuário</a>
+            <a href="./produto.html">Produto</a>
+            <a href="./categoria.html">Categoria</a>
+            <a href="./estoque.html">Estoque</a>
+            <a href="./fornecedor.html">Fornecedor</a>
+            <a href="./pedido.html">Pedido</a>
+            <a href="./endereco.html">Endereço</a>
+            <a href="./compra.html">Compra</a>
+            <a href="./pagamento.html">Pagamento</a>
+            <a href="./entrega.html">Entrega</a>
+            <a href="./itemPedido.html">Itens Pedido</a>
+            <a href="./itensCompra.html">Itens Compra</a>
+            <a href="./produtoFornecedor.html">Produto-Fornecedor</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Gerenciar Pagamentos</h1>
+        
+        <div class="box">
+            <h2>Tabela dos Pagamentos</h2>
+            <div id="resList"></div>
+        </div>
+
+        <div class="box">
+            <h2>Cadastrar Pagamento</h2>
+            <label for="idPedido">ID do Pedido (opcional)</label>
+            <input type="number" id="idPedido" placeholder="Ex.: 1"><br>
+
+            <label for="idCompra">ID da Compra (opcional)</label>
+            <input type="number" id="idCompra" placeholder="Ex.: 1"><br>
+
+            <label for="valor">Valor</label>
+            <input type="number" id="valor" placeholder="Ex.: 150.00" step="0.01"><br>
+
+            <label for="metodo">Método de Pagamento</label>
+            <select id="metodo">
+                <option value="CARTAO_CREDITO">Cartão de Crédito</option>
+                <option value="PIX">PIX</option>
+                <option value="BOLETO">Boleto</option>
+                <option value="TRANSFERENCIA">Transferência</option>
+                <option value="DEBITO">Débito</option>
+            </select><br>
+
+            <label for="status">Status</label>
+            <select id="status">
+                <option value="PENDENTE">Pendente</option>
+                <option value="APROVADO">Aprovado</option>
+                <option value="RECUSADO">Recusado</option>
+                <option value="ESTORNADO">Estornado</option>
+            </select><br>
+            
+            <button id="cadastrar">Cadastrar</button>
+            <div id="resCad"></div>
+        </div>
+
+        <div class="box">
+            <h2>Atualizar Pagamento (Completo)</h2>
+            <label for="codPagamentoUp">Código do Pagamento</label>
+            <input type="number" id="codPagamentoUp" placeholder="Ex.: 1"><br>
+            
+            <label for="idPedidoUp">ID do Pedido</label>
+            <input type="number" id="idPedidoUp" placeholder="Ex.: 1"><br>
+            
+            <label for="idCompraUp">ID da Compra</label>
+            <input type="number" id="idCompraUp" placeholder="Ex.: 1"><br>
+
+            <label for="valorUp">Valor</label>
+            <input type="number" id="valorUp" placeholder="Ex.: 150.00" step="0.01"><br>
+
+            <label for="metodoUp">Método de Pagamento</label>
+            <select id="metodoUp">
+                <option value="CARTAO_CREDITO">Cartão de Crédito</option>
+                <option value="PIX">PIX</option>
+                <option value="BOLETO">Boleto</option>
+                <option value="TRANSFERENCIA">Transferência</option>
+                <option value="DEBITO">Débito</option>
+            </select><br>
+
+            <label for="statusUp">Status</label>
+            <select id="statusUp">
+                <option value="PENDENTE">Pendente</option>
+                <option value="APROVADO">Aprovado</option>
+                <option value="RECUSADO">Recusado</option>
+                <option value="ESTORNADO">Estornado</option>
+            </select><br>
+
+            <button id="atualizar">Atualizar</button>
+            <div id="resAtualizar"></div>
+        </div>
+
+        <div class="box">
+            <h2>Atualizar Parcialmente Pagamento</h2>
+            <label for="codPagamentoPatch">Código do Pagamento</label>
+            <input type="number" id="codPagamentoPatch" placeholder="Ex.: 1"><br>
+            
+            <label for="statusPatch">Status (opcional)</label>
+            <select id="statusPatch">
+                <option value="">Selecione...</option>
+                <option value="PENDENTE">Pendente</option>
+                <option value="APROVADO">Aprovado</option>
+                <option value="RECUSADO">Recusado</option>
+                <option value="ESTORNADO">Estornado</option>
+            </select><br>
+
+            <button id="atualizarParcial">Atualizar Parcial</button>
+            <div id="resAtualizarParcial"></div>
+        </div>
+
+        <div class="box">
+            <h2>Deletar Pagamento</h2>
+            <label for="codPagamentoDel">Código do Pagamento</label>
+            <input type="number" id="codPagamentoDel" placeholder="Ex.: 1"><br>
+            
+            <button id="apagar">Apagar</button>
+            <div id="resDel"></div>
+        </div>
+    </main>
+</body>
+</html>

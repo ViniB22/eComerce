@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - ShopStore</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/js/auth.js" defer></script>
+    <script src="../assets/js/carrinho.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="produto.html">Produtos</a>
+                <a href="carrinho.html" class="active">
+                    Carrinho
+                    <span id="carrinhoBadge" class="carrinho-badge" style="display: none;">0</span>
+                </a>
+                <button id="btnLogout" class="btn-logout">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="carrinho-container">
+            <h1>Meu Carrinho</h1>
+            
+            <div id="carrinhoItens">
+                <!-- Itens do carrinho serão inseridos aqui -->
+            </div>
+
+            <div id="carrinhoResumo" class="carrinho-resumo" style="display: none;">
+                <div class="carrinho-total" id="carrinhoTotal">
+                    Total: R$ 0,00
+                </div>
+                <div class="carrinho-acoes">
+                    <button id="btnContinuarComprando" class="btn-secondary">
+                        Continuar Comprando
+                    </button>
+                    <button id="btnFinalizarCompra" class="btn-primary">
+                        Finalizar Compra
+                    </button>
+                    <button id="btnLimparCarrinho" class="btn-danger">
+                        Limpar Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div id="carrinhoVazio" class="carrinho-vazio">
+                <h2>Seu carrinho está vazio</h2>
+                <p>Adicione alguns produtos incríveis ao seu carrinho!</p>
+                <button id="btnExplorarProdutos" class="btn-primary">
+                    Explorar Produtos
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Finalização -->
+    <div id="modalFinalizacao" class="modal-finalizacao">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <h2>Finalizar Compra</h2>
+            <div id="modalContent">
+                <!-- Conteúdo do modal será preenchido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
