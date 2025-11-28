@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Produtos - ShopStore</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./loja/carrinho.html">Carrinho</a></li>
+                <li><a href="./loja/infoComp/endereco.html">Endereço</a></li>
+                <li><a href="./loja/infoComp/pagamento.html">Pagamento</a></li>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Produtos Disponíveis</h1>
+            <div id="produtosList">
+                <!-- Lista de produtos será carregada aqui -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Access control
+        const user = JSON.parse(sessionStorage.getItem('user'));
+        if (!user || user.tipo_usuario !== 'CLIENTE') {
+            alert('Acesso negado. Você precisa ser cliente.');
+            window.location.href = '/index.html';
+        }
+    </script>
+    <script src="../assets/js/infoLoja/menuProd.js"></script>
+</body>
+
+</html>

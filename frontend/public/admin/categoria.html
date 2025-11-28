@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Categorias - ShopStore</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="/index.html">Home</a>
+                <a href="/public/home/login.html">Login</a>
+                <a href="/public/home/cadUser.html">Cadastrar</a>
+                <a href="/public/menuProd.html">Produtos</a>
+                <a href="/public/loja/carrinho.html">Carrinho</a>
+                <a href="/public/menuAdm.html">Administração</a>
+                <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Gerenciar Categorias</h1>
+            <form id="categoriaForm">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricao" name="descricao"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="is_ativo">Ativo:</label>
+                    <input type="checkbox" id="is_ativo" name="is_ativo" checked>
+                </div>
+                <button type="submit">Salvar</button>
+            </form>
+            <div id="categoriasList">
+                <!-- Lista de categorias será carregada aqui -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../../assets/js/infoAdmin/crudCatg.js"></script>
+</body>
+
+</html>
