@@ -11,7 +11,7 @@ const {
 
 async function syncDataBase(){
     try{
-        await conn.sync({ force: true }) 
+        await conn.sync({ alter: true }) 
         
         console.log('----------------------------')
         console.log('Banco de Dados sincronizado!')

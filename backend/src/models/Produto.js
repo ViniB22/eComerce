@@ -7,6 +7,14 @@ const Produto = db.define('produto',{
         primaryKey: true,
         autoIncrement: true
     },
+    idCategoria: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'categorias_produtos', // Nome da tabela de categorias
+            key: 'codCategoria'
+        }
+    },
     nome: {
         type: DataTypes.STRING(100),
         allowNull: false

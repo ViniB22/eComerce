@@ -8,7 +8,7 @@ async function criar(req, res) {
         const fornecedor = await criarFornecedor(req.body)
 
         return res.status(201).json({
-            mensagem: 'Fornecedor criado com sucesso',
+            message: 'Fornecedor criado com sucesso',
             fornecedor
         })
 
@@ -37,7 +37,7 @@ async function atualizar(req, res) {
         const fornecedorAtualizado = await atualizarFornecedor(id, dados)
 
         return res.status(200).json({
-            mensagem: 'Fornecedor atualizado com sucesso',
+            message: 'Fornecedor atualizado com sucesso',
             fornecedor: fornecedorAtualizado
         })
 
@@ -56,7 +56,7 @@ async function atualizarCompleto(req, res) {
         const fornecedorAtualizado = await atualizarFornecedorCompleto(id, dados)
 
         return res.status(200).json({
-            mensagem: 'Fornecedor atualizado completamente com sucesso',
+            message: 'Fornecedor atualizado completamente com sucesso',
             fornecedor: fornecedorAtualizado
         })
 
@@ -72,7 +72,7 @@ async function deletar(req, res) {
 
         await apagarFornecedor(id)
 
-        return res.status(200).json({ mensagem: 'Fornecedor apagado com sucesso' })
+        return res.status(200).json({ message: 'Fornecedor apagado com sucesso' })
 
     } catch (err) {
         return res.status(500).json({ erro: err.message })

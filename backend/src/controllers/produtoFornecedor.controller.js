@@ -8,7 +8,7 @@ async function criar(req, res) {
         const produtoFornecedor = await criarProdutoFornecedor(req.body)
 
         return res.status(201).json({
-            mensagem: 'Relação produto-fornecedor criada com sucesso',
+            message: 'Relação produto-fornecedor criada com sucesso',
             produtoFornecedor
         })
 
@@ -37,7 +37,7 @@ async function atualizar(req, res) {
         const produtoFornecedorAtualizado = await atualizarProdutoFornecedor(id, dados)
 
         return res.status(200).json({
-            mensagem: 'Relação produto-fornecedor atualizada com sucesso',
+            message: 'Relação produto-fornecedor atualizada com sucesso',
             produtoFornecedor: produtoFornecedorAtualizado
         })
 
@@ -56,7 +56,7 @@ async function atualizarCompleto(req, res) {
         const produtoFornecedorAtualizado = await atualizarProdutoFornecedorCompleto(id, dados)
 
         return res.status(200).json({
-            mensagem: 'Relação produto-fornecedor atualizada completamente com sucesso',
+            message: 'Relação produto-fornecedor atualizada completamente com sucesso',
             produtoFornecedor: produtoFornecedorAtualizado
         })
 
@@ -72,7 +72,7 @@ async function deletar(req, res) {
 
         await apagarProdutoFornecedor(id)
 
-        return res.status(200).json({ mensagem: 'Relação produto-fornecedor apagada com sucesso' })
+        return res.status(200).json({ message: 'Relação produto-fornecedor apagada com sucesso' })
 
     } catch (err) {
         return res.status(500).json({ erro: err.message })

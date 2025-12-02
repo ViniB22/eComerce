@@ -179,6 +179,17 @@ body {
     background: #219a52;
 }
 
+button{ 
+    background: #00ff62;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    align-self: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
 /* Footer */
 .footer {
     background: #2c3e50;

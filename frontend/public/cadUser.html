@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário - ShopStore</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/infoHome/cadUser.js" defer></script>
+    <script src="../assets/js/logout.js" defer></script>
 </head>
 
 <body>
@@ -16,12 +18,12 @@
                 <h1>ShopStore</h1>
             </div>
             <div class="nav-links">
-                <a href="../../index.html">Home</a>
-                <a href="login.html">Login</a>
-                <a href="cadUser.html">Cadastrar</a>
-                <a href="../menuProd.html">Produtos</a>
-                <a href="../loja/carrinho.html">Carrinho</a>
-                <a href="../menuAdm.html">Administração</a>
+                <a href="../index.html">Home</a>
+                <a href="./login.html">Login</a>
+                <a href="./cadUser.html">Cadastrar</a>
+                <a href="./menuProd.html">Produtos</a>
+                <a href="./carrinho.html">Carrinho</a>
+                <a href="./menuAdm.html">Administração</a>
                 <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
             </div>
         </nav>
@@ -56,7 +58,8 @@
                     <label for="identidade">Identidade:</label>
                     <input type="text" id="identidade" name="identidade">
                 </div>
-                <button type="submit">Cadastrar</button>
+                <button id="cadastrar">Cadastrar</button>
+                <div id="res"></div>
             </form>
         </div>
     </main>
@@ -65,8 +68,6 @@
     <footer class="footer">
         <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
     </footer>
-
-    <script src="../../assets/js/infoHome/cadUser.js"></script>
 </body>
 
 </html>

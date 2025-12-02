@@ -8,7 +8,7 @@ async function criar(req, res) {
         const categoria = await criarCategoriaProduto(req.body)
 
         return res.status(201).json({
-            mensagem: 'Categoria criada com sucesso',
+            message: 'Categoria criada com sucesso',
             categoria
         })
 
@@ -37,7 +37,7 @@ async function atualizar(req, res) {
         const categoriaAtualizada = await atualizarCategoriaProduto(id, dados)
 
         return res.status(200).json({
-            mensagem: 'Categoria atualizado com sucesso',
+            message: 'Categoria atualizada com sucesso',
             categoria: categoriaAtualizada
         })
 
@@ -56,7 +56,7 @@ async function atualizarCompleto(req, res) {
         const categoriaAtualizada = await atualizarCategoriaProdutoCompleto(id, dados)
 
         return res.status(200).json({
-            mensagem: 'Categoria atualizado completamente com sucesso',
+            message: 'Categoria atualizada completamente com sucesso',
             categoria: categoriaAtualizada
         })
 
@@ -72,7 +72,7 @@ async function deletar(req, res) {
 
         await apagarCategoriaProduto(id)
 
-        return res.status(200).json({ mensagem: 'Categoria apagado com sucesso' })
+        return res.status(200).json({ message: 'Categoria apagada com sucesso' })
 
     } catch (err) {
         return res.status(500).json({ erro: err.message })

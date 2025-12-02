@@ -32,9 +32,9 @@ btnLogin.addEventListener('click', () => {
             
             // Redirecionar conforme tipo
             if(dados.usuario.tipo === 'ADMIN') {
-                location.href = '../menuAdm.html'
+                location.href = './menuAdm.html'
             }else{
-                location.href = '../menuProd.html'
+                location.href = './menuProd.html'
             }
         }, 1500)
     })
@@ -42,10 +42,4 @@ btnLogin.addEventListener('click', () => {
         console.error('Erro:', err)
         res.innerHTML = 'Erro ao fazer login'
     })
-})
-
-btnLogout.addEventListener('click', () => {
-    sessionStorage.clear()
-    alert('Logout realizado com sucesso!')
-    location.href = '../../public/home/login.html'
 })

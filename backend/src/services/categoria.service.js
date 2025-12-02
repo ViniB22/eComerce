@@ -6,13 +6,12 @@ async function criarCategoriaProduto(dados) {
 
     // Validações simples antes de salvar
     if (!nome) {
-        throw new Error('Nome é obrigatórios')
+        throw new Error('Nome é obrigatório')
     }
 
     const novoCategoria = await CategoriaProduto.create({
         nome,
-        descricao,
-        is_ativo
+        descricao
     })
 
     return novoCategoria
@@ -35,7 +34,7 @@ async function atualizarCategoriaProduto(id, dados) {
     // Atualizar apenas os campos enviados
     await categoria.update(dados)
 
-    return CategoriaProduto
+    return categoria
 
 }
 
@@ -51,14 +50,15 @@ async function atualizarCategoriaProdutoCompleto(id, dados) {
 
     // Validações básicas
     if (!nome ) {
-        throw new Error('Nome é obrigatórios')
+        throw new Error('Nome é obrigatório')
     }
 
-    await categoria.update({
-        nome,
-        descricao,
-        is_ativo
-    })
+    const updateData = { nome, descricao }
+    if (is_ativo !== undefined) {
+        updateData.is_ativo = is_ativo
+    }
+
+    await categoria.update(updateData)
 
     return categoria
 }

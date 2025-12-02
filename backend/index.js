@@ -1,4 +1,5 @@
 require('dotenv').config()
+require('./src/models/rel') // Define associations
 const app = require('./src/server/app')
 const conn = require('./src/db/conn')
 

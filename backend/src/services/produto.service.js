@@ -1,24 +1,34 @@
 const Produto = require('../models/Produto')
+const Categoria = require('../models/CategoriaProduto')
 
 async function criarProduto(dados) {
 
-    const { nome, descricao, modelo, preco, imagem_url, ativo } = dados
-
-    // Validações simples antes de salvar
-    if (!nome || !modelo || !preco) {
-        throw new Error('Nome, modelo e preço são obrigatórios')
+    const { nome, descricao, modelo, preco, imagem_url, ativo, idCategoria } = dados
+    
+    if (!nome || !modelo || !preco, !idCategoria) {
+        throw new Error('Nome, modelo, preço e categoria são obrigatórios')
     }
+    try {
+        const categoria = await Categoria.findByPk(idCategoria)
+        if (!categoria) {
+            throw new Error('Categoria não encontrada')
+        }
 
-    const novoProduto = await Produto.create({
-        nome,
-        descricao,
-        modelo,
-        preco,
-        imagem_url,
-        ativo
-    })
+        const novoProduto = await Produto.create({
+            nome,
+            descricao,
+            modelo,
+            preco,
+            imagem_url,
+            idCategoria,
+            ativo
+        })
 
-    return novoProduto
+        return novoProduto
+
+    } catch (err) {
+        console.error('Erro ao verificar categoria:', err)
+    }
 }
 
 async function listarProdutos() {
@@ -50,21 +60,19 @@ async function atualizarProdutoCompleto(id, dados) {
         throw new Error('Produto não encontrado')
     }
 
-    const { nome, descricao, modelo, preco, imagem_url, ativo } = dados
+    const { nome, descricao, modelo, preco, imagem_url, ativo, idCategoria } = dados
 
     // Validações básicas
     if (!nome || !modelo || !preco) {
         throw new Error('Nome, modelo e preço são obrigatórios')
     }
 
-    await produto.update({
-        nome,
-        descricao,
-        modelo,
-        preco,
-        imagem_url,
-        ativo
-    })
+    const updateData = { nome, descricao, modelo, preco, imagem_url, idCategoria }
+    if (ativo !== undefined) {
+        updateData.ativo = ativo
+    }
+
+    await produto.update(updateData)
 
     return produto
 }
@@ -83,5 +91,7 @@ async function apagarProduto(id) {
 }
 
 
-module.exports = { criarProduto, listarProdutos, 
-    atualizarProduto, atualizarProdutoCompleto, apagarProduto }
+module.exports = {
+    criarProduto, listarProdutos,
+    atualizarProduto, atualizarProdutoCompleto, apagarProduto
+}

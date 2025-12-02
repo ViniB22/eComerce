@@ -5,11 +5,10 @@ const { criarProduto, listarProdutos,
 async function criar(req, res) {
 
     try {
-
         const produto = await criarProduto(req.body)
 
         return res.status(201).json({
-            mensagem: 'Produto criado com sucesso',
+            message: 'Produto criado com sucesso',
             produto
         })
 
@@ -38,7 +37,7 @@ async function atualizar(req, res) {
         const produtoAtualizado = await atualizarProduto(id, dados)
 
         return res.status(200).json({
-            mensagem: 'Produto atualizado com sucesso',
+            message: 'Produto atualizado com sucesso',
             produto: produtoAtualizado
         })
 
@@ -57,7 +56,7 @@ async function atualizarCompleto(req, res) {
         const produtoAtualizado = await atualizarProdutoCompleto(id, dados)
 
         return res.status(200).json({
-            mensagem: 'Produto atualizado completamente com sucesso',
+            message: 'Produto atualizado completamente com sucesso',
             produto: produtoAtualizado
         })
 
@@ -73,7 +72,7 @@ async function deletar(req, res) {
 
         await apagarProduto(id)
 
-        return res.status(200).json({ mensagem: 'Produto apagado com sucesso' })
+        return res.status(200).json({ message: 'Produto apagado com sucesso' })
 
     } catch (err) {
         return res.status(500).json({ erro: err.message })

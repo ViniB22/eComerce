@@ -111,7 +111,7 @@ Pagamento.belongsTo(Pedido, {
 CategoriaProduto.hasMany(Produto, {
     foreignKey: 'idCategoria',
     as: 'produtosDaCategoria',
-    onDelete: 'SET NULL', // Se a Categoria for deletada, o produto fica sem
+    onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 })
 
@@ -120,7 +120,7 @@ CategoriaProduto.hasMany(Produto, {
 Produto.belongsTo(CategoriaProduto, {
     foreignKey: 'idCategoria',
     as: 'categoriaProduto',
-    onDelete: 'SET NULL', 
+    onDelete: 'CASCADE', 
     onUpdate: 'CASCADE'
 })
 

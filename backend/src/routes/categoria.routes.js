@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const { criar, listar, atualizar,
-    atualizarCompleto, deletar } = require('../controllers/produto.controller')
+    atualizarCompleto, deletar } = require('../controllers/categoria.controller')
 
 // Middlewares
 const authMiddleware = require('../middlewares/auth.middleware')
